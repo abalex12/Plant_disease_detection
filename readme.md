@@ -39,18 +39,7 @@ For GPU acceleration, ensure CUDA-compatible PyTorch is installed according to y
 
 ## Dataset
 
-This project uses the New Plant Diseases Dataset (Augmented), which contains labeled images of healthy and diseased plant leaves across multiple categories. The dataset should be organized in the following structure:
-```
-dataset/
-├── train/
-│   ├── class_1/
-│   ├── class_2/
-│   └── ...
-└── validation/
-    ├── class_1/
-    ├── class_2/
-    └── ...
-```
+This project uses the New Plant Diseases Dataset (Augmented), which contains labeled images of healthy and diseased plant leaves across multiple categories.  
 
 ## Methodology
 
@@ -92,30 +81,6 @@ The architecture combines a pre-trained Vision Transformer with a custom classif
 
 The differential learning rate strategy preserves pre-trained features while allowing the classification head to adapt rapidly to the specific disease detection task.
 
-## Usage
-
-### Training the Model
-```python
-# Configure dataset paths
-train_dir = "path/to/train"
-val_dir = "path/to/validation"
-
-# Initialize model and training pipeline
-model = PlantDiseaseViT(num_classes=10)
-
-# Train model
-train_model(model, train_loader, val_loader, epochs=20)
-```
-
-### Making Predictions
-```python
-# Load best model checkpoint
-model.load_state_dict(torch.load("best_model.pth"))
-model.eval()
-
-# Predict on new image
-prediction = predict_image(model, image_path)
-```
 
 ## Evaluation Metrics
 
@@ -140,24 +105,6 @@ Training progress and model performance are visualized through:
 
 The fine-tuned Vision Transformer achieves competitive accuracy in distinguishing between healthy and diseased tomato leaves across multiple disease categories. Detailed metrics are generated during evaluation and saved for analysis.
 
-## Project Structure
-```
-project/
-├── data/
-│   ├── train/
-│   └── validation/
-├── models/
-│   └── best_model.pth
-├── src/
-│   ├── data_preprocessing.py
-│   ├── model.py
-│   ├── train.py
-│   └── evaluate.py
-├── results/
-│   ├── plots/
-│   └── metrics/
-└── README.md
-```
 
 ## Future Enhancements
 
